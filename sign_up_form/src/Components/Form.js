@@ -14,10 +14,12 @@ class Form extends Component{
         }
         
     }
-    handleUpdate = () => alert(`Hello, Your name is ${this.state.firstName} ${this.state.lastName}, Gender is ${this.state.gender}, and your occupation is ${this.state.occupation}` );
+    handleSubmit = (event) =>{
+        alert(`Hello, Your name is ${this.state.firstName} ${this.state.lastName}, a ${this.state.age} years old ${this.state.gender}, and your occupation is ${this.state.occupation}` );
+        event.preventDefault();}
     render(){
         return(
-            <form >
+            <form onSubmit={this.handleSubmit}>
                 First Name<br/>
                 <input type='text' name='userName' value={this.state.firstName} onChange = {(e) => this.setState({ firstName : e.target.value})}/><br/>
                 last Name<br/>
@@ -30,10 +32,8 @@ class Form extends Component{
                 <input type='text' name='gender' value={this.state.gender} onChange = {(e) => this.setState({ gender : e.target.value})}/><br/>
                 Occupation<br/>
                 <input type='text' name='age' value={this.state.occupation} onChange = {(e) => this.setState({occupation : e.target.value})}/><br/>
-                <button type='submit' value='submit'onClick={this.handleUpdate}>submit</button>
-
-                
-
+                <input type='submit' value='submit' />
+                 {/* Here input work as a button on selection of type submit */}
             </form>
         )
     }
